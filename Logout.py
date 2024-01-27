@@ -13,7 +13,7 @@ auth0_client_secret = "1mtzwPPbMwz2YunSJ-Ms28sDdaqBCPfWzzk8tuDnrFxZkvyHla7AqLRNO
 
 
 DEFAULT_PAGE = "HealthOracle.py"
-SECOND_PAGE_NAME = "welcome"
+SECOND_PAGE_NAME = "Welcome"
 
 
 st.set_page_config( 

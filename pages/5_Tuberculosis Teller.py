@@ -18,23 +18,27 @@ predictor = CustomVisionPredictionClient(ENDPOINT, credentials)
 
 st.set_page_config(page_title="HealthOracle: Decode Your Health")
 
-doctors = [
-    {
-        "name": "Dr. Harshavardhan Bajoria",
-        "specialization": "Pulmonologist",
-        "location": "Kolkata",
-        "available_days": "Mon, Tue, Fri",
-        "contact": "hvbajoria@hotmail.com",
-    },
-    {
-        "name": "Dr. Soumya Upadhyay",
-        "specialization": "Chest Physician",
-        "location": "Mumbai",
-        "available_days": "Wed, Thu, Sat",
-        "contact": "usoumya19@gmail.com",
-    },
-    # Add more doctors here...
-]
+database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
+database_headers={'X-Cybozu-API-Token':'LeX70V7wU3KdgKN6JkzOlLkLK8nShxoEFbuF1ZWj', 'Content-Type': 'application/json'}
+
+doctors = []
+
+# Fetching doctors from database
+for i in range(6,9):
+    database_data = {
+        'app':1,
+        'id':i
+    }
+
+    database_response = requests.get(f"{database_endpoint}", headers=database_headers, json=database_data)
+    
+    doctor={}
+    doctor["name"]=database_response.json()["record"]["Text"]["value"]
+    doctor["specialization"]=database_response.json()["record"]["Text_0"]["value"]
+    doctor["location"]=database_response.json()["record"]["Text_1"]["value"]
+    doctor["available_days"]=database_response.json()["record"]["Text_3"]["value"]
+    doctor["contact"]=database_response.json()["record"]["Text_2"]["value"]
+    doctors.append(doctor)
 
 def bot_response(question):
     API_BASE_URL = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/"
@@ -137,7 +141,27 @@ st.markdown(
         """,
     unsafe_allow_html=True,
 )
-st.title("HealthOracle")
+
+def gradient_text(text, color1, color2):
+        gradient_css = f"""
+        background: -webkit-linear-gradient(left, {color1}, {color2});
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        font-size: 42px;
+        """
+        return f'<span style="{gradient_css}">{text}</span>'
+
+color1 = "#0d3270"
+color2 = "#0fab7b"
+text = "HealthOracle: Tuberculosis Teller"
+  
+# left_co, cent_co,last_co = st.columns(3)
+# with cent_co:
+#     st.image("images/logo.png", width=200)
+
+styled_text = gradient_text(text, color1, color2)
+st.write(f"<div style='text-align: center;'>{styled_text}</div>", unsafe_allow_html=True)
 st.text(
     "Upload an image of a close up of a CT scan and we will tell you whether you have tuberculosis or not."
 )

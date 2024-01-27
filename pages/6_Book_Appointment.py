@@ -67,8 +67,52 @@ def get_doctor_email(doctor_name):
 
 
 def doctor():
-    st.title("HealthOracle")
+    
+    def gradient_text(text, color1, color2):
+        gradient_css = f"""
+        background: -webkit-linear-gradient(left, {color1}, {color2});
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: bold;
+        font-size: 42px;
+        """
+        return f'<span style="{gradient_css}">{text}</span>'
+
+    color1 = "#0d3270"
+    color2 = "#0fab7b"
+    text = "HealthOracle: Decode Your Health"
+  
+    # left_co, cent_co,last_co = st.columns(3)
+    # with cent_co:
+    #     st.image("images/logo.png", width=200)
+
+    styled_text = gradient_text(text, color1, color2)
+    st.write(f"<div style='text-align: center;'>{styled_text}</div>", unsafe_allow_html=True)
     st.markdown("### Book your appointment with ease")
+    if "doctor" not in st.session_state:
+        database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
+        database_headers={'X-Cybozu-API-Token':'LeX70V7wU3KdgKN6JkzOlLkLK8nShxoEFbuF1ZWj', 'Content-Type': 'application/json'}
+
+        doctors = []
+
+        # Fetching doctors from database
+        for i in range(1,9):
+            database_data = {
+            'app':1,
+            'id':i
+            }
+
+            database_response = requests.get(f"{database_endpoint}", headers=database_headers, json=database_data)
+    
+            doctor={}
+            doctor["name"]=database_response.json()["record"]["Text"]["value"]
+            doctor["specialization"]=database_response.json()["record"]["Text_0"]["value"]
+            doctor["location"]=database_response.json()["record"]["Text_1"]["value"]
+            doctor["available_days"]=database_response.json()["record"]["Text_3"]["value"]
+            doctor["contact"]=database_response.json()["record"]["Text_2"]["value"]
+            doctors.append(doctor)
+        st.session_state.doctor = doctors
+
     if "treatment" in st.session_state:
         st.warning(f"We have detected: {st.session_state.treatment}\n", icon='📑')
     st.write("Select a doctor to view details and book an appointment: :stethoscope:")
