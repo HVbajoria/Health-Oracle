@@ -3,8 +3,8 @@ import time
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 from msrest.authentication import ApiKeyCredentials
 import requests
-
-from Book_Appointment import doctor
+import docx
+from streamlit_extras.switch_page_button import switch_page
 
 # Replace with your endpoint and prediction key
 ENDPOINT = "https://tuberculosisai-prediction.cognitiveservices.azure.com/"
@@ -17,6 +17,24 @@ credentials = ApiKeyCredentials(in_headers={"Prediction-key": PREDICTION_KEY})
 predictor = CustomVisionPredictionClient(ENDPOINT, credentials)
 
 st.set_page_config(page_title="HealthOracle: Decode Your Health")
+
+doctors = [
+    {
+        "name": "Dr. Harshavardhan Bajoria",
+        "specialization": "Pulmonologist",
+        "location": "Kolkata",
+        "available_days": "Mon, Tue, Fri",
+        "contact": "hvbajoria@hotmail.com",
+    },
+    {
+        "name": "Dr. Soumya Upadhyay",
+        "specialization": "Chest Physician",
+        "location": "Mumbai",
+        "available_days": "Wed, Thu, Sat",
+        "contact": "usoumya19@gmail.com",
+    },
+    # Add more doctors here...
+]
 
 def bot_response(question):
     API_BASE_URL = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/"
@@ -79,7 +97,7 @@ def runner():
         st.session_state.knowledge=""
         st.session_state.first_run = True
         st.snow()
-        st.success("Click on any button to refresh", icon='✅')
+        st.success("Click on end button to remove chat", icon='✅')
         return
     
     st.download_button(
@@ -107,7 +125,7 @@ st.markdown(
                 background-repeat: no-repeat;                
             }
             [data-testid="stSidebarNav"]::before {
-                content: "MedAIgnosis";
+                content: "Health Oracle";
                 margin-left: 20px;
                 margin-top: 20px;
 
@@ -158,7 +176,7 @@ if image is not None:
                 name = prediction.tag_name
 
     if name!="unknown":
-        st.text(f"Detected {name} with high confidence")
+        st.success(f"Detected {name} with high confidence", icon='📃')
         if name == "Tuberculosis":
             st.write(
                 """
@@ -198,7 +216,11 @@ if image is not None:
             else:
                 runner()
 
-            doctor()
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment="Tuberculosis"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
 
     else:
         st.text("No disease detected")

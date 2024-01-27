@@ -4,24 +4,6 @@ from azure.cognitiveservices.vision.customvision.prediction import CustomVisionP
 from msrest.authentication import ApiKeyCredentials
 import requests
 
-doctors = [
-    {
-        "name": "Dr. Harshavardhan Bajoria",
-        "specialization": "Pulmonologist",
-        "location": "Kolkata",
-        "available_days": "Mon, Tue, Fri",
-        "contact": "hvbajoria@hotmail.com",
-    },
-    {
-        "name": "Dr. Soumya Upadhyay",
-        "specialization": "Chest Physician",
-        "location": "Mumbai",
-        "available_days": "Wed, Thu, Sat",
-        "contact": "usoumya19@gmail.com",
-    },
-    # Add more doctors here...
-]
-
 def book_appointment(doctor_name, patient_email, patient_name):
     # Add your booking logic here, e.g., database integration, etc.
 
@@ -79,14 +61,18 @@ def send_appointment_email(doctor_email, patient_email, doctor_name, patient_nam
 def get_doctor_email(doctor_name):
     # Replace this function with a method to retrieve the doctor's email from your database or list
     # In this example, we'll assume the email is stored in the 'contact' field of the doctor's details.
-    for doctor in doctors:
+    for doctor in st.session_state.doctor:
         if doctor["name"] == doctor_name:
             return doctor["contact"]
 
 
 def doctor():
-    st.write("Select a doctor to view details and book an appointment:")
-    selected_doctor = st.selectbox("Select a doctor", [doctor["name"] for doctor in doctors])
+    st.title("HealthOracle")
+    st.markdown("### Book your appointment with ease")
+    if "treatment" in st.session_state:
+        st.warning(f"We have detected: {st.session_state.treatment}\n", icon='📑')
+    st.write("Select a doctor to view details and book an appointment: :stethoscope:")
+    selected_doctor = st.selectbox("Select a doctor", [doctor["name"] for doctor in st.session_state.doctor])
 
 
     # Add an input field for the patient's email
@@ -103,9 +89,29 @@ def doctor():
             book_appointment(selected_doctor, patient_email, patient_name)
 
 
-    for doctor in doctors:
+    for doctor in st.session_state.doctor:
         if doctor["name"] == selected_doctor:
             st.subheader(doctor["name"])
             st.write(f"Specialization: {doctor['specialization']}")
             st.write(f"Location: {doctor['location']}")
             st.write(f"Available Days: {doctor['available_days']}")
+st.markdown(
+    """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-repeat: no-repeat;                
+            }
+            [data-testid="stSidebarNav"]::before {
+                content: "Health Oracle";
+                margin-left: 20px;
+                margin-top: 20px;
+
+                font-size: 30px;
+                text-align: center;
+                position: relative;
+            }
+        </style>
+        """,
+    unsafe_allow_html=True,
+)
+doctor()

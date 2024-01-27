@@ -3,7 +3,26 @@ import time
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 from msrest.authentication import ApiKeyCredentials
 import requests
-from Book_Appointment import doctor
+import docx
+from streamlit_extras.switch_page_button import switch_page
+
+doctors = [
+    {
+        "name": "Dr. Harshavardhan Bajoria",
+        "specialization": "Medical oncologist",
+        "location": "Pune",
+        "available_days": "Mon, Thursday, Sat",
+        "contact": "hvbajoria@hotmail.com",
+    },
+    {
+        "name": "Dr. Soumya Upadhyay",
+        "specialization": "Pulmonologist",
+        "location": "Ahemdabad",
+        "available_days": "Tue, Wed, Fri",
+        "contact": "usoumya19@gmail.com",
+    },
+    # Add more doctors here...
+]
 
 # Replace with your endpoint and prediction key
 ENDPOINT = "https://centralindia.api.cognitive.microsoft.com/"
@@ -78,7 +97,7 @@ def runner():
         st.session_state.knowledge=""
         st.session_state.first_run = True
         st.snow()
-        st.success("Click on any button to refresh", icon='✅')
+        st.success("Click on end button to remove chat", icon='✅')
         return
     
     st.download_button(
@@ -120,7 +139,7 @@ st.markdown(
                 background-repeat: no-repeat;                
             }
             [data-testid="stSidebarNav"]::before {
-                content: "MedAIgnosis";
+                content: "Health Oracle";
                 margin-left: 20px;
                 margin-top: 20px;
 
@@ -171,8 +190,8 @@ if image is not None:
                 name = prediction.tag_name
 
     if name!="unknown":
-        st.text(f"Detected {name} with high confidence")
-        if name == "Glioma":
+        st.success(f"Detected {name} with high confidence", icon='📃')
+        if name == "adenocarcinoma":
             st.write(
                 """
                 Glioma is a brain tumor that develops from glial cells. Its exact causes are not fully known, but risk factors include radiation exposure and certain genetic disorders. Gliomas can affect brain function, causing headaches, seizures, and neurological deficits. MRI is used to detect and evaluate gliomas, showing abnormal masses or areas of increased signal intensity. The size, location, and enhancement pattern of the tumor help determine its grade and guide treatment decisions.
@@ -210,7 +229,11 @@ if image is not None:
             else:
                 runner()
 
-            doctor()
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment=f"{name} Lung Cancer"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
 
         elif (
             name == "Meningioma"
@@ -251,7 +274,11 @@ if image is not None:
             else:
                 runner()
 
-            doctor()
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment=f"{name} Lung Cancer"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
 
         elif name == "Pituitary":
             st.write(
@@ -262,7 +289,7 @@ if image is not None:
             st.image("images/petu.jfif", caption="Pituitary", width=350)
             st.write("Known Carried Diseases")
             ctab1, ctab2, ctab3 = st.tabs(
-                ["Causes", "symptoms", "Treatment"]
+                ["Causes", "Symptoms", "Treatment"]
             )
             with ctab1:
                 st.write(pcauses)
@@ -290,7 +317,11 @@ if image is not None:
             else:
                 runner()
 
-            doctor()
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment=f"{name} Lung Cancer"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
 
     else:
         st.text("No disease detected")
