@@ -67,7 +67,7 @@ def save_to_doc(conversation):
         p_bot.add_run("Bot: ").bold = True
         p_bot.add_run(bot)
 
-    doc.save("chatbot_conversation.docx")
+    doc.save("HealthOracle_Chat.docx")
 
 def runner():
 
@@ -102,7 +102,7 @@ def runner():
     
     st.download_button(
                 label="Download Conversation",
-                data=open("chatbot_conversation.docx", "rb").read(),
+                data=open("HealthOracle_Chat.docx", "rb").read(),
                 file_name="Conversation.docx",
                 mime="application/octet-stream",
                 help="Click to download the conversation."
@@ -218,7 +218,13 @@ if image is not None:
                 st.write(
                     "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
                 )
-            
+
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment=f"{name} Lung Cancer"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
+
             st.markdown("##### Need more information? :speech_balloon:", unsafe_allow_html=False)
             first_run = st.session_state.get("first_run", True)
 
@@ -228,12 +234,6 @@ if image is not None:
                     runner()
             else:
                 runner()
-
-            book=st.button("Book Appointment with Doctor")
-            if book:
-                st.session_state.treatment=f"{name} Lung Cancer"
-                st.session_state.doctor = doctors
-                switch_page('Book_Appointment')
 
         elif (
             name == "Meningioma"
@@ -263,6 +263,12 @@ if image is not None:
                 st.write(
                     "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
                 )
+
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment=f"{name} Lung Cancer"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
             
             st.markdown("##### Need more information? :speech_balloon:", unsafe_allow_html=False)
             first_run = st.session_state.get("first_run", True)
@@ -273,12 +279,6 @@ if image is not None:
                     runner()
             else:
                 runner()
-
-            book=st.button("Book Appointment with Doctor")
-            if book:
-                st.session_state.treatment=f"{name} Lung Cancer"
-                st.session_state.doctor = doctors
-                switch_page('Book_Appointment')
 
         elif name == "Pituitary":
             st.write(
@@ -306,6 +306,12 @@ if image is not None:
                 st.write(
                     "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
                 )
+
+            book=st.button("Book Appointment with Doctor")
+            if book:
+                st.session_state.treatment=f"{name} Lung Cancer"
+                st.session_state.doctor = doctors
+                switch_page('Book_Appointment')
             
             st.markdown("##### Need more information? :speech_balloon:", unsafe_allow_html=False)
             first_run = st.session_state.get("first_run", True)
@@ -316,12 +322,6 @@ if image is not None:
                     runner()
             else:
                 runner()
-
-            book=st.button("Book Appointment with Doctor")
-            if book:
-                st.session_state.treatment=f"{name} Lung Cancer"
-                st.session_state.doctor = doctors
-                switch_page('Book_Appointment')
 
     else:
         st.text("No disease detected")
