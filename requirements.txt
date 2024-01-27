@@ -1,0 +1,7 @@
+streamlit
+azure-cognitiveservices-vision-customvision==3.1.0
+requests==2.26.0
+streamlit_extras
+docarray==0.13.17
+docx2txt==0.8
+python-docx
