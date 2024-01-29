@@ -3,24 +3,27 @@ import time
 from azure.cognitiveservices.vision.customvision.prediction import CustomVisionPredictionClient
 from msrest.authentication import ApiKeyCredentials
 import requests
+import streamlit.components.v1 as components
+import js2py 
 
-def book_appointment(doctor_name, patient_email, patient_name):
+
+def book_appointment(doctor_name, patient_email, patient_name, textresponse):
     # Add your booking logic here, e.g., database integration, etc.
 
 
     # Send confirmation email to the patient
-    send_confirmation_email(patient_email, doctor_name, patient_name)
+    send_confirmation_email(patient_email, doctor_name, patient_name, textresponse)
 
 
     # Send appointment email to the doctor
     doctor_email = get_doctor_email(doctor_name)
-    send_appointment_email(doctor_email, patient_email, doctor_name, patient_name)
+    send_appointment_email(doctor_email, patient_email, doctor_name, patient_name, textresponse)
 
 
     st.success(f"Appointment booked with {doctor_name}. You will be contacted soon!")
 
 
-def send_confirmation_email(patient_email, doctor_name,patient_name):
+def send_confirmation_email(patient_email, doctor_name,patient_name, textresponse):
    # Replace 'your_azure_logic_app_url' with the URL of your Azure logic app to send appointment emails
     azure_logic_app_url = "https://prod-11.centralindia.logic.azure.com/workflows/a845897faa254f93a5db7375a917acc7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qJUCl1H4fqe0QGHrhZQonWcYbCIM_W2Pv7sZElzdTLg"
 
@@ -28,9 +31,10 @@ def send_confirmation_email(patient_email, doctor_name,patient_name):
         "to": patient_email,
          "name": patient_name,
         "subject": "Appointment Confirmed at HealthOracle",
+       
         "content": f"Your appointment with {doctor_name} has been booked successfully. You will be contacted soon.",
     }
-
+    print(textresponse)
 
     response = requests.post(azure_logic_app_url, json=email_data)
     if response.status_code == 200 or response.status_code == 202:
@@ -39,7 +43,7 @@ def send_confirmation_email(patient_email, doctor_name,patient_name):
         st.error("Failed to send confirmation email.")
 
 
-def send_appointment_email(doctor_email, patient_email, doctor_name, patient_name):
+def send_appointment_email(doctor_email, patient_email, doctor_name, patient_name, textresponse):
     # Replace 'your_azure_logic_app_url' with the URL of your Azure logic app to send appointment emails
     azure_logic_app_url ="https://prod-11.centralindia.logic.azure.com/workflows/a845897faa254f93a5db7375a917acc7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qJUCl1H4fqe0QGHrhZQonWcYbCIM_W2Pv7sZElzdTLg"
 
@@ -47,6 +51,7 @@ def send_appointment_email(doctor_email, patient_email, doctor_name, patient_nam
         "to": doctor_email,
         "name": doctor_name,
         "subject": "New Appointment at HealthOracle",
+        "specialmessage": textresponse,
         "content": f"A new appointment has been booked with you by {patient_name}. \n More details will be shared soon.",
     }
 
@@ -123,14 +128,20 @@ def doctor():
     patient_email = st.text_input("Enter your email", "")
     patient_name = st.text_input("Enter your name", "")
 
-
+    # components.html("<!DOCTYPE html> <html lang=\"en\"><head><!-- Place the first <script> tag in your HTML's <head> --><script src=\"https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js\" referrerpolicy=\"origin\"></script><!-- Place the following <script> and <textarea> tags your HTML's <body> --><script> tinymce.init({selector: 'textarea',plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',tinycomments_mode: 'embedded',tinycomments_author: 'Author name',mergetags_list: [ { value: 'First.Name', title: 'First Name' },{ value: 'Email', title: 'Email' }, ],ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(\"See docs to implement AI \")),});</script></head><body><textarea>Enter Your Custom Message</textarea></body></html>", width=800, height=500)
+    # code_2 = "function get() {return tinymce.activeEditor.getContent(\"tox-tinymce\");}"
+    # textresponse = js2py.eval_js(code_2) 
+    # print(textresponse())
+    from mycomponent import mycomponent
+    textresponse = mycomponent(my_input_value="hello there")
+    
     if st.button("Book Appointment"):
         if not patient_email:
             st.warning("Please enter your email.")
         if not patient_name:
             st.warning("Please enter your name.")
         else:
-            book_appointment(selected_doctor, patient_email, patient_name)
+            book_appointment(selected_doctor, patient_email, patient_name, textresponse)
 
 
     for doctor in st.session_state.doctor:

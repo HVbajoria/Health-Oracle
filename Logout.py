@@ -12,9 +12,8 @@ clientId = "dUCTosQyCfOt1hJ1nP3enlBarSCvmpcP"
 auth0_client_secret = "1mtzwPPbMwz2YunSJ-Ms28sDdaqBCPfWzzk8tuDnrFxZkvyHla7AqLRNOtyWsOiY"
 
 
-DEFAULT_PAGE = "HealthOracle.py"
+DEFAULT_PAGE = "Logout.py"
 SECOND_PAGE_NAME = "Welcome"
-
 
 st.set_page_config( 
      page_title="HealthOracle", 
@@ -81,7 +80,7 @@ st.session_state["username"]="User"
 # Main function
 def main():
     # """Login page"""
-    logged_in = False
+    logged_in = True
     hide_default_format = """ 
         <style> 
         #MainMenu {visibility: show; } 

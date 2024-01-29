@@ -8,3 +8,4 @@ python-docx
 streamlit-auth0-component
 google-auth==2.22.0
 google-auth-httplib2==0.1.0
+js2py
