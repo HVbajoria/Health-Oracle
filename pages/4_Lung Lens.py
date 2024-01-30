@@ -113,28 +113,111 @@ def runner():
             )
 
 gcauses = """
-The exact causes of glioma, a type of brain tumor, are not fully understood. However, certain risk factors have been identified. These include exposure to ionizing radiation, a family history of glioma, and certain genetic disorders such as neurofibromatosis type 1 and Li-Fraumeni syndrome. While these factors may increase the risk, in many cases, the underlying cause of glioma remains unknown.
+There are a few factors that contribute to the development of this disease. The most common adenocarcinoma causes include:
+
+Smoking- Tobacco use is the primary cause of adenocarcinoma and other types of cancer.
+Toxin exposure- Harmful toxins in your home or work environment can also cause adenocarcinoma.
+Previous radiation therapy- If you've had radiation therapy in the past, you have a higher risk of developing adenocarcinoma.
 """
 gsymptoms = """
-Gliomas can have significant symptoms on brain function and overall health. As the tumor grows, it can exert pressure on surrounding brain tissue, leading to symptoms such as headaches, seizures, difficulty speaking or understanding language, memory problems, changes in personality or mood, and neurological deficits like weakness or loss of sensation in the limbs. The severity and specific symptoms experienced by an individual can vary depending on the location, size, and grade of the glioma.
+The first symptom is usually a chronic cough. You may cough up saliva and mucous with small amounts of blood. Other symptoms may include:
+
+Difficulty breathing
+Chest pain
+Wheezing
+Hoarseness
+Loss of appetite
+Weight loss
 """
 gtreat = """
-The treatment of glioma depends on several factors, including the tumor's location, size, grade, and the patient's overall health. Treatment options may include surgery to remove the tumor, radiation therapy to target and kill cancer cells, and chemotherapy to destroy or slow down tumor growth. In some cases, a combination of these treatments may be used. The choice of treatment is determined by a multidisciplinary team of medical professionals and is tailored to the individual patient's needs and circumstances. Regular monitoring and follow-up care are essential to assess the tumor's response to treatment and manage any potential side symptoms.
+The treatment recommended for you will depend on the location, size and type of tumor. It also depends on whether or not the cancer has spread to other parts of your body. There are three main treatments for adenocarcinoma:
+
+Surgery- Usually the first line of treatment for adenocarcinoma, surgery is done to remove cancer and some of the surrounding tissue.
+Chemotherapy- This treatment involves using drugs to kill cancer cells. Chemotherapy may be used in a specific area or throughout your entire body.
+Radiation therapy- Often used in combination with chemotherapy or surgery, radiation therapy uses imaging to target adenocarcinoma tumors and leave healthy tissues intact.
 """
 
-mcauses = """The exact causes of meningioma, a type of brain tumor, are not well understood. However, certain risk factors have been identified, including radiation exposure, such as previous radiation therapy to the head, and certain genetic conditions like neurofibromatosis type 2 (NF2). Hormonal factors, such as increased levels of estrogen, have also been associated with an increased risk of developing meningiomas. Nonetheless, the underlying cause of most meningiomas remains unknown.
+mcauses = """Some of the causes and risk factors for squamous cell lung carcinoma include:
+
+Smoking
+
+Of all the causes of lung cancer, smoking is the most important. According to the National Cancer Institute, smokers are 10 times more likely to get any lung cancer than people who have smoked fewer than 100 cigarettes.
+
+Radon exposure
+The Environmental Protection Agency (EPA) lists radon as the second leading cause of lung cancer. It’s also the most common cause of lung cancer in nonsmokers.
+Radon is a radioactive, odorless, invisible gas from rocks and soil. It’s a problem only in enclosed places, such as a house, because radon concentration is higher. People who smoke and are exposed to radon have a much higher risk for lung cancer.
+
+Secondhand smoke exposure
+
+Being exposed to secondhand smoke can increase your risk of lung cancer.
+
+
 """
-msymptoms = """Meningiomas can have varying symptoms depending on their size, location, and growth rate. Some meningiomas may not cause noticeable symptoms and can be incidentally discovered during imaging tests conducted for unrelated reasons. However, when symptoms do occur, they can include headaches, seizures, changes in vision or hearing, weakness or numbness in the limbs, and cognitive or personality changes. The specific symptoms and their severity can differ from person to person.
+msymptoms = """Many people don't experience squamous cell lung carcinoma symptoms until the cancer spreads. Some of the most common symptoms are:
+
+persistent cough
+bloody sputum
+shortness of breath or wheezing
+hoarseness
+chest pain, especially when taking a deep breath or coughing
+unexplained weight loss
+decreased appetite
+fatigue
+
+It's also possible that people with squamous cell lung carcinoma may experience recurring lung infections. These can include pneumonia or bronchitis.
+
+
 """
 mtreat = """
-The treatment of meningioma depends on factors such as tumor size, location, and growth rate, as well as the individual's overall health. Treatment options may include observation with regular monitoring for slow-growing or asymptomatic tumors, surgery to remove the tumor, radiation therapy to target and destroy cancer cells, and in some cases, medication to manage symptoms or slow down tumor growth. The choice of treatment is based on a thorough evaluation by a multidisciplinary team of healthcare professionals and is tailored to the specific needs of each patient. Regular follow-up care is important to assess the tumor's response to treatment and address any potential complications or recurrence.
+Treatment for squamous cell lung carcinoma depends on how advanced the cancer is, your ability to tolerate the side effects, and your overall health. Age isn’t usually a consideration.
+
+The treatment you receive will be specific to your situation, but there are some general guidelines for the treatment of each stage.
 """
 
-pcauses = """
-The exact causes of pituitary tumors, also known as pituitary adenomas, are not fully understood. However, certain factors may increase the risk of their development. These include genetic conditions like multiple endocrine neoplasia type 1 (MEN1) and Carney complex, as well as rare hereditary syndromes such as familial isolated pituitary adenoma. Hormonal imbalances, exposure to certain chemicals, and head injuries have also been suggested as potential contributing factors. However, in many cases, the underlying cause of pituitary tumors remains unknown."""
-psymptoms = """Pituitary tumors can have diverse symptoms depending on their size, location, and hormone production. They can disrupt the normal functioning of the pituitary gland, leading to hormonal imbalances and associated symptoms. The specific symptoms can vary widely, ranging from vision problems and headaches due to pressure on nearby structures, to hormonal disturbances resulting in issues such as infertility, growth abnormalities, changes in body composition, and metabolic problems. The symptoms of pituitary tumors are highly dependent on the specific hormones involved and the individual's overall health.
+pcauses = """The exact causes of large cell carcinoma, like other types of lung cancer, are not fully understood, but several risk factors have been identified. Here are some of the key factors associated with the development of large cell carcinoma:
+Smoking
+Secondhand smoke
+Genetic factors
+Lung disease
 """
-ptreat = """The treatment of pituitary tumors depends on several factors, including the tumor's size, hormone production, and the individual's overall health. Treatment options may include medication to regulate hormone levels, surgery to remove the tumor, radiation therapy to destroy tumor cells, or a combination of these approaches. The choice of treatment is determined by a multidisciplinary team of medical professionals and is tailored to the individual patient's needs and circumstances. Regular monitoring and follow-up care are often necessary to manage hormone levels, monitor tumor growth, and ensure optimal treatment outcomes.
+psymptoms = """ Large cell carcinoma and other forms of non-small cell lung cancer share the same symptoms, which may include:
+
+persistent cough that gets worse over time
+coughing up blood
+trouble breathing
+chest pain
+wheezing
+hoarseness
+weight loss without trying
+poor appetite
+fatigue or tiredness
+difficulty swallowing
+swelling around the face or neck
+"""
+ptreat = """Here are some of the main types of treatment for non-small cell lung cancers like Large cell carcinoma.
+
+Surgery
+
+Surgery may be one of the first treatment steps if cancer was detected early and hasn't spread.
+
+Radiation therapy
+
+When tumors have grown too large to remove, or when trying to avoid removing large sections of lung, radiation therapy may be used to try and control cancer growth.
+
+Chemotherapy
+
+Chemotherapy involves the use of a number of medications that kill fast-growing cells like cancer. It can affect other cells that grow fast, too, like skin and hair.
+
+Targeted therapy
+
+With some cancers, like those caused by genetic mutations, special medications that target cancer cells but spare healthy cells may be used. These medications typically don't cure cancer but control growth and spread.
+
+Immunotherapy
+
+Immunotherapy is a growing area of medicine, where the immune system is programmed to fight a variety of conditions.
+
+
+
 """
 st.markdown(
     """
@@ -230,17 +313,17 @@ if image is not None:
             with tab1:
                 st.write(gcauses)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://my.clevelandclinic.org/health/diseases/21652-adenocarcinoma-cancers)"
                 )
             with tab2:
                 st.write(gsymptoms)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://my.clevelandclinic.org/health/diseases/21652-adenocarcinoma-cancers)"
                 )
             with tab3:
                 st.write(gtreat)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://my.clevelandclinic.org/health/diseases/21652-adenocarcinoma-cancers)"
                 )
 
             book=st.button("Book Appointment with Doctor")
@@ -260,7 +343,7 @@ if image is not None:
                 runner()
 
         elif (
-            name == "large cell carcinoma"
+            name == "squamous cell carcinoma"
         ):
             st.write(
                 """
@@ -275,17 +358,17 @@ if image is not None:
             with btab1:
                 st.write(mcauses)
                 st.write(
-                    "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
+                    "More Info can be found on the [Cancer Website](https://www.healthline.com/health/lung-cancer/squamous-cell-lung-carcinoma#treatment)"
                 )
             with btab2:
                 st.write(msymptoms)
                 st.write(
-                    "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
+                    "More Info can be found on the [Cancer Website](https://www.healthline.com/health/lung-cancer/squamous-cell-lung-carcinoma#treatment)"
                 )
             with btab3:
                 st.write(mtreat)
                 st.write(
-                    "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
+                    "More Info can be found on the [Cancer Website](https://www.healthline.com/health/lung-cancer/squamous-cell-lung-carcinoma#treatment)"
                 )
 
             book=st.button("Book Appointment with Doctor")
@@ -304,7 +387,7 @@ if image is not None:
             else:
                 runner()
 
-        elif name == "squamous cell carcinoma":
+        elif name == "large cell carcinoma":
             st.write(
                 """
                 A pituitary tumor, also known as pituitary adenoma, is a non-cancerous growth in the pituitary gland. It can be functioning or non-functioning, causing hormonal imbalances or symptoms due to its size. Symptoms may include headaches, vision problems, fatigue, and hormonal disturbances. Diagnosis involves imaging tests like MRI, and treatment options include medication, surgery, or radiation therapy.
@@ -318,17 +401,17 @@ if image is not None:
             with ctab1:
                 st.write(pcauses)
                 st.write(
-                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
+                    "More Info can be found on the [Cancer.org](https://www.cancer.org/)"
                 )
             with ctab2:
                 st.write(psymptoms)
                 st.write(
-                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
+                    "More Info can be found on the [ Healthline.com](https://www.healthline.com/health/lung-cancer/large-cell-carcinoma#treatment)"
                 )
             with ctab3:
                 st.write(ptreat)
                 st.write(
-                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
+                    "More Info can be found on the [Healthline.com](https://www.healthline.com/health/lung-cancer/large-cell-carcinoma#treatment)"
                 )
 
             book=st.button("Book Appointment with Doctor")
