@@ -159,17 +159,18 @@ def doctor():
         editor_selector : "mceEditor"   //<<<---- 
     });
 function content() {
-    var contents = tinyMCE.get('myTextArea').getContent();
+    const contents = tinyMCE.get('myTextArea').getContent();
     const subdomain = 'hvbajoria101';
 const apiToken = 'pK6weuGWDK6vLoayztUCzpc1MP3CRSemxB6vZsqN';
 
-const url = `https://$hvbajoria101.kintone.com/k/v1/records.json`;
+const url = `https://hvbajoria101.kintone.com/k/v1/record.json`;
 
 const data = {
   app: 2,
+  id:1,
   records: [
     {
-      Text: { value: content }
+      Text: { value: contents }
     }
   ]
 };
