@@ -7,23 +7,23 @@ import streamlit.components.v1 as components
 import js2py 
 import sys
 
-def book_appointment(doctor_name, patient_email, patient_name, textresponse):
+def book_appointment(doctor_name, patient_email, patient_name):
     # Add your booking logic here, e.g., database integration, etc.
 
 
     # Send confirmation email to the patient
-    send_confirmation_email(patient_email, doctor_name, patient_name, textresponse)
+    send_confirmation_email(patient_email, doctor_name, patient_name)
 
 
     # Send appointment email to the doctor
     doctor_email = get_doctor_email(doctor_name)
-    send_appointment_email(doctor_email, patient_email, doctor_name, patient_name, textresponse)
+    send_appointment_email(doctor_email, patient_email, doctor_name, patient_name)
 
 
     st.success(f"Appointment booked with {doctor_name}. You will be contacted soon!")
 
 
-def send_confirmation_email(patient_email, doctor_name,patient_name, textresponse):
+def send_confirmation_email(patient_email, doctor_name,patient_name):
    # Replace 'your_azure_logic_app_url' with the URL of your Azure logic app to send appointment emails
     azure_logic_app_url = "https://prod-11.centralindia.logic.azure.com/workflows/a845897faa254f93a5db7375a917acc7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qJUCl1H4fqe0QGHrhZQonWcYbCIM_W2Pv7sZElzdTLg"
 
@@ -34,7 +34,6 @@ def send_confirmation_email(patient_email, doctor_name,patient_name, textrespons
        
         "content": f"Your appointment with {doctor_name} has been booked successfully. You will be contacted soon.",
     }
-    print(textresponse)
 
     response = requests.post(azure_logic_app_url, json=email_data)
     if response.status_code == 200 or response.status_code == 202:
@@ -43,7 +42,7 @@ def send_confirmation_email(patient_email, doctor_name,patient_name, textrespons
         st.error("Failed to send confirmation email.")
 
 
-def send_appointment_email(doctor_email, patient_email, doctor_name, patient_name, textresponse):
+def send_appointment_email(doctor_email, patient_email, doctor_name, patient_name):
     # Replace 'your_azure_logic_app_url' with the URL of your Azure logic app to send appointment emails
     azure_logic_app_url ="https://prod-11.centralindia.logic.azure.com/workflows/a845897faa254f93a5db7375a917acc7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qJUCl1H4fqe0QGHrhZQonWcYbCIM_W2Pv7sZElzdTLg"
 
@@ -51,7 +50,6 @@ def send_appointment_email(doctor_email, patient_email, doctor_name, patient_nam
         "to": doctor_email,
         "name": doctor_name,
         "subject": "New Appointment at HealthOracle",
-        "specialmessage": textresponse,
         "content": f"A new appointment has been booked with you by {patient_name}. \n More details will be shared soon.",
     }
 
@@ -128,108 +126,60 @@ def doctor():
     patient_email = st.text_input("Enter your email", "")
     patient_name = st.text_input("Enter your name", "")
 
-    components.html("""<!DOCTYPE html> 
-    <html lang="en"><head>
-<script src="https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-</head><body>
-<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
-<script>
-  tinymce.init({
-    selector: 'textarea',
-    plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
-    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
-    tinycomments_mode: 'embedded',
-    tinycomments_author: 'Author name',
-    mergetags_list: [
-      { value: 'First.Name', title: 'First Name' },
-      { value: 'Email', title: 'Email' },
-    ],
-    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
-  });
-</script>
-<button onclick="content()">Get content</button>
-<form method="post" action="somepage">
-    <textarea id="myTextArea" class="mceEditor">I should buy a boat. </textarea>
-</form>
-<br><br>
-<script type="text/javascript">
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from selenium.webdriver.common.by import By
+    from selenium.webdriver.support.ui import WebDriverWait
+    from selenium.webdriver.support import expected_conditions as EC
 
-    tinyMCE.init({
-        mode : "specific_textareas",
-        editor_selector : "mceEditor"   //<<<---- 
-    });
-function content() {
-    const contents = tinyMCE.get('myTextArea').getContent();
-    const subdomain = 'hvbajoria101';
-const apiToken = 'pK6weuGWDK6vLoayztUCzpc1MP3CRSemxB6vZsqN';
+    # Render TinyMCE editor using components.html
+    st.components.v1.html("""
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head>
+<body>
+    <script>
+        // Create a global variable to store the downloadFile function
+        window.downloadFile = function() {
+            let content = tinymce.get('myTextArea').getContent();
+            var dict={}
+            dict["item"]="message"
+            dict["value"]=content
+            localStorage.setItem('message', content); 
+        };
 
-const url = `https://hvbajoria101.kintone.com/k/v1/record.json`;
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+        });
+    </script>
 
-const data = {
-  app: 2,
-  id:1,
-  records: [
-    {
-      Text: { value: contents }
-    }
-  ]
-};
+    <form method="post" action="somepage">
+        <textarea id="myTextArea" class="mceEditor">I should buy a boat.</textarea>
+    </form>
 
-fetch(url, {
-  method: 'POST',
-  headers: {
-    'X-Cybozu-API-Token': apiToken,
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify(data)
-})
-  .then(response => response.json())
-  .then(data => console.log('Response:', data))
-  .catch(error => console.error('Error:', error));
+    <button onclick="downloadFile()">Save File</button>
+</body>
+</html>
+    """, height=600)
 
-}
-
-</script>
-</body></html>""")
-    # code_2 = "src=\"" function get() {return tinymce.activeEditor.getContent();}"
-    # textresponse = js2py.eval_js(code_2) 
-    # print(textresponse())
-    # from mycomponent import mycomponent
-    # textresponse = mycomponent(my_input_value="hello there")
-    
+    # Streamlit button to trigger Selenium script
     if st.button("Book Appointment"):
-        if not patient_email:
-            st.warning("Please enter your email.")
-        if not patient_name:
-            st.warning("Please enter your name.")
+        if not patient_email or not patient_name:
+            st.warning("Please enter both email and name.")
         else:
-            components.html("""<!DOCTYPE html> <html lang="en"><head>
-            <script src="https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js" referrerpolicy="origin">
-            </script></head>
-            <body>
             
-            <script> tinyMCE.triggerSave();
-            var myContent = tinymce.activeEditor.getContent();
-            var body = {
-  'app': 2,
-  'record': {
-    'Text': {
-      'value': myContent
-    }
-  }
-};
-console.log(myContent)
-kintone.api(kintone.api.url('/k/v1/record.json', true), 'POST', body, function(resp) {
-  // success
-  
-  console.log(resp);
-}, function(error) {
-  // error
-  console.log(error);
-});</script>
-            </body>""")
-
-            # book_appointment(selected_doctor, patient_email, patient_name, textresponse)
+            book_appointment(selected_doctor, patient_email, patient_name)
 
 
     for doctor in st.session_state.doctor:
