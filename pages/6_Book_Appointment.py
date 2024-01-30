@@ -128,8 +128,68 @@ def doctor():
     patient_email = st.text_input("Enter your email", "")
     patient_name = st.text_input("Enter your name", "")
 
-    components.html("<!DOCTYPE html> <html lang=\"en\"><head><!-- Place the first <script> tag in your HTML's <head> --><script src=\"https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js\" referrerpolicy=\"origin\"></script><!-- Place the following <script> and <textarea> tags your HTML's <body> --><script> tinymce.init({selector: 'textarea',plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',tinycomments_mode: 'embedded',tinycomments_author: 'Author name',mergetags_list: [ { value: 'First.Name', title: 'First Name' },{ value: 'Email', title: 'Email' }, ],ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(\"See docs to implement AI \")),}); tinymce.activeEditor.getContent(\"mytextarea\");</script></head><body><textarea>Enter Your Custom Message</textarea></body></html>", width=800, height=500)
-    
+    components.html("""<!DOCTYPE html> 
+    <html lang="en"><head>
+<script src="https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+</head><body>
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+    tinycomments_mode: 'embedded',
+    tinycomments_author: 'Author name',
+    mergetags_list: [
+      { value: 'First.Name', title: 'First Name' },
+      { value: 'Email', title: 'Email' },
+    ],
+    ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
+  });
+</script>
+<button onclick="content()">Get content</button>
+<form method="post" action="somepage">
+    <textarea id="myTextArea" class="mceEditor">I should buy a boat. </textarea>
+</form>
+<br><br>
+<script type="text/javascript">
+
+    tinyMCE.init({
+        mode : "specific_textareas",
+        editor_selector : "mceEditor"   //<<<---- 
+    });
+function content() {
+    var contents = tinyMCE.get('myTextArea').getContent();
+    const subdomain = 'hvbajoria101';
+const apiToken = 'pK6weuGWDK6vLoayztUCzpc1MP3CRSemxB6vZsqN';
+
+const url = `https://$hvbajoria101.kintone.com/k/v1/records.json`;
+
+const data = {
+  app: 2,
+  records: [
+    {
+      Text: { value: content }
+    }
+  ]
+};
+
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'X-Cybozu-API-Token': apiToken,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(data)
+})
+  .then(response => response.json())
+  .then(data => console.log('Response:', data))
+  .catch(error => console.error('Error:', error));
+
+}
+
+</script>
+</body></html>""")
     # code_2 = "src=\"" function get() {return tinymce.activeEditor.getContent();}"
     # textresponse = js2py.eval_js(code_2) 
     # print(textresponse())
@@ -142,7 +202,33 @@ def doctor():
         if not patient_name:
             st.warning("Please enter your name.")
         else:
-            book_appointment(selected_doctor, patient_email, patient_name, textresponse)
+            components.html("""<!DOCTYPE html> <html lang="en"><head>
+            <script src="https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js" referrerpolicy="origin">
+            </script></head>
+            <body>
+            
+            <script> tinyMCE.triggerSave();
+            var myContent = tinymce.activeEditor.getContent();
+            var body = {
+  'app': 2,
+  'record': {
+    'Text': {
+      'value': myContent
+    }
+  }
+};
+console.log(myContent)
+kintone.api(kintone.api.url('/k/v1/record.json', true), 'POST', body, function(resp) {
+  // success
+  
+  console.log(resp);
+}, function(error) {
+  // error
+  console.log(error);
+});</script>
+            </body>""")
+
+            # book_appointment(selected_doctor, patient_email, patient_name, textresponse)
 
 
     for doctor in st.session_state.doctor:
