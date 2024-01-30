@@ -225,7 +225,7 @@ if image is not None:
             st.write("More Info")
 
             tab1, tab2, tab3 = st.tabs(
-                ["Causes", "symptoms", "Treatment"]
+                ["Causes", "Symptoms", "Treatment"]
             )
             with tab1:
                 st.write(gcauses)
@@ -260,7 +260,7 @@ if image is not None:
                 runner()
 
         elif (
-            name == "Meningioma"
+            name == "large cell carcinoma"
         ):
             st.write(
                 """
@@ -304,7 +304,7 @@ if image is not None:
             else:
                 runner()
 
-        elif name == "Pituitary":
+        elif name == "squamous cell carcinoma":
             st.write(
                 """
                 A pituitary tumor, also known as pituitary adenoma, is a non-cancerous growth in the pituitary gland. It can be functioning or non-functioning, causing hormonal imbalances or symptoms due to its size. Symptoms may include headaches, vision problems, fatigue, and hormonal disturbances. Diagnosis involves imaging tests like MRI, and treatment options include medication, surgery, or radiation therapy.

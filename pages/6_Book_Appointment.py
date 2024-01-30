@@ -5,7 +5,7 @@ from msrest.authentication import ApiKeyCredentials
 import requests
 import streamlit.components.v1 as components
 import js2py 
-
+import sys
 
 def book_appointment(doctor_name, patient_email, patient_name, textresponse):
     # Add your booking logic here, e.g., database integration, etc.
@@ -128,12 +128,13 @@ def doctor():
     patient_email = st.text_input("Enter your email", "")
     patient_name = st.text_input("Enter your name", "")
 
-    # components.html("<!DOCTYPE html> <html lang=\"en\"><head><!-- Place the first <script> tag in your HTML's <head> --><script src=\"https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js\" referrerpolicy=\"origin\"></script><!-- Place the following <script> and <textarea> tags your HTML's <body> --><script> tinymce.init({selector: 'textarea',plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',tinycomments_mode: 'embedded',tinycomments_author: 'Author name',mergetags_list: [ { value: 'First.Name', title: 'First Name' },{ value: 'Email', title: 'Email' }, ],ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(\"See docs to implement AI \")),});</script></head><body><textarea>Enter Your Custom Message</textarea></body></html>", width=800, height=500)
-    # code_2 = "function get() {return tinymce.activeEditor.getContent(\"tox-tinymce\");}"
+    components.html("<!DOCTYPE html> <html lang=\"en\"><head><!-- Place the first <script> tag in your HTML's <head> --><script src=\"https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js\" referrerpolicy=\"origin\"></script><!-- Place the following <script> and <textarea> tags your HTML's <body> --><script> tinymce.init({selector: 'textarea',plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',tinycomments_mode: 'embedded',tinycomments_author: 'Author name',mergetags_list: [ { value: 'First.Name', title: 'First Name' },{ value: 'Email', title: 'Email' }, ],ai_request: (request, respondWith) => respondWith.string(() => Promise.reject(\"See docs to implement AI \")),}); tinymce.activeEditor.getContent(\"mytextarea\");</script></head><body><textarea>Enter Your Custom Message</textarea></body></html>", width=800, height=500)
+    
+    # code_2 = "src=\"" function get() {return tinymce.activeEditor.getContent();}"
     # textresponse = js2py.eval_js(code_2) 
     # print(textresponse())
-    from mycomponent import mycomponent
-    textresponse = mycomponent(my_input_value="hello there")
+    # from mycomponent import mycomponent
+    # textresponse = mycomponent(my_input_value="hello there")
     
     if st.button("Book Appointment"):
         if not patient_email:
