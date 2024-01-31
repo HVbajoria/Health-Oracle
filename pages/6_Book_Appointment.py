@@ -174,7 +174,7 @@ def doctor():
 </style>
 
     <form method="post" action="somepage">
-        <textarea id="myTextArea" class="mceEditor">I should buy a boat.</textarea>
+        <textarea id="myTextArea" class="mceEditor">It is under development. It stores the message in local storage</textarea>
     </form>
 
     <button onclick="downloadFile()">Save Message</button>
