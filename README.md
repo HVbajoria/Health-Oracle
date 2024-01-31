@@ -83,7 +83,14 @@ Health Oracle is a paradigm shift in healthcare, placing the power of AI-powered
 * **Cloudflare AI workflow** to build the medical assistant AI chat bot which helps the user know more details about illness. 
 * **Kintone** to securely store and fetch doctor’s data from the App. It also allows us to get various views and insights about our doctors. 
 * **TinyMCE** to allow the user to send a customize message to the doctor with the help of rich text editor (under development)
- * **GitHub** to host the source code, use the version control (collaboration history) to understand the changes, and go back and forth if required to complete the software. Also, GitHub Codespaces which allows us with in-browser VS code for quick and easy building and deployment of the software. 
+ * **GitHub** to host the source code, use the version control (collaboration history) to understand the changes, and go back and forth if required to complete the software. Also, GitHub Codespaces which allows us with in-browser VS code for quick and easy building and deployment of the software.
+
+## Methodology: 
+<p align="center">
+<img src="https://github.com/HVbajoria/Health-Oracle/assets/62978274/3426ae77-3547-4ad4-8cc2-2edbfe7bbfe2" width="950" alt="Methodology" >
+  </p>
+</br>
+
     
  ## Demo Video Link :movie_camera: : 
  
