@@ -78,6 +78,9 @@ def runner():
         st.session_state.conversation = []
 
     user_input = st.chat_input(placeholder="Your message")
+    doc = docx.Document()
+    doc.save("HealthOracle_Chat.docx")
+
 
     if user_input:
         if user_input:
