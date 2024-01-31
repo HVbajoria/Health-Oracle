@@ -166,11 +166,11 @@ st.text(
     "Upload an image of a close up of a CT scan and we will tell you whether you have tuberculosis or not."
 )
 # read images.zip as a binary file and put it into the button
-with open("tuberculosis.zip", "rb") as fp:
+with open("Tuberculosis.zip", "rb") as fp:
     btn = st.download_button(
         label="Download test images",
         data=fp,
-        file_name="tuberculosis.zip",
+        file_name="Tuberculosis.zip",
         mime="application/zip",
     )
 image = st.file_uploader(
@@ -217,17 +217,17 @@ if image is not None:
             with tab1:
                 st.write(causes)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/tuberculosis/symptoms-causes/syc-20351250)"
                 )
             with tab2:
                 st.write(symptoms)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/tuberculosis/symptoms-causes/syc-20351250)"
                 )
             with tab3:
                 st.write(treat)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/tuberculosis/diagnosis-treatment/drc-20351256)"
                 )
 
             book=st.button("Book Appointment with Doctor")
@@ -248,4 +248,3 @@ if image is not None:
 
     else:
         st.text("No disease detected")
-    

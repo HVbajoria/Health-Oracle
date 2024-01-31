@@ -183,11 +183,11 @@ st.text(
     "Upload an image of a close up of your CT scan and we will tell you what is the disease you are suffering from"
 )
 # read images.zip as a binary file and put it into the button
-with open("kidney.zip", "rb") as fp:
+with open("Kidney.zip", "rb") as fp:
     btn = st.download_button(
         label="Download test images",
         data=fp,
-        file_name="kidney.zip",
+        file_name="Kidney.zip",
         mime="application/zip",
     )
 image = st.file_uploader(
@@ -233,17 +233,17 @@ if image is not None:
             with tab1:
                 st.write(cystcauses)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-cysts/symptoms-causes/syc-20374134)"
                 )
             with tab2:
                 st.write(cystsymptoms)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-cysts/symptoms-causes/syc-20374134)"
                 )
             with tab3:
                 st.write(cysttreat)
                 st.write(
-                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-cysts/diagnosis-treatment/drc-20374138#:~:text=If%20a%20simple%20kidney%20cyst,whether%20your%20kidney%20cyst%20changes.)"
                 )
             
             
@@ -281,17 +281,17 @@ if image is not None:
             with btab1:
                 st.write(stonecauses)
                 st.write(
-                    "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
+                    "More Info can be found on the [Mayo clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-stones/symptoms-causes/syc-20355755#:~:text=Kidney%20stones%20form%20in%20your,and%20blood%20in%20your%20urine.)"
                 )
             with btab2:
                 st.write(stonesymptoms)
                 st.write(
-                    "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
+                    "More Info can be found on the [Mayo clinic Website](https://www.mayoclinic.org/diseases-conditions/kidney-stones/symptoms-causes/syc-20355755#:~:text=Kidney%20stones%20form%20in%20your,and%20blood%20in%20your%20urine.)"
                 )
             with btab3:
                 st.write(stonetreat)
                 st.write(
-                    "More Info can be found on the [Cancer Website](https://www.cancer.gov/rare-brain-spine-tumor/tumors/meningioma)"
+                    "More Info can be found on the [Mayo clinic Website](https://www.mayoclinic.org/diseases-conditions/kidney-stones/diagnosis-treatment/drc-20355759)"
                 )
             
             book=st.button("Book Appointment with Doctor")
@@ -326,17 +326,17 @@ if image is not None:
             with ctab1:
                 st.write(tumorcauses)
                 st.write(
-                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
+                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-cancer/symptoms-causes/syc-20352664)"
                 )
             with ctab2:
                 st.write(tumorsymptoms)
                 st.write(
-                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
+                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-cancer/symptoms-causes/syc-20352664)"
                 )
             with ctab3:
                 st.write(tumortreat)
                 st.write(
-                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548)"
+                    "More Info can be found on the [MAYO clinic website](https://www.mayoclinic.org/diseases-conditions/kidney-cancer/symptoms-causes/syc-20352664)"
                 )
 
             book=st.button("Book Appointment with Doctor")
@@ -357,4 +357,6 @@ if image is not None:
 
     else:
         st.text("Feel Safe! No disease detected")
+
+
     
