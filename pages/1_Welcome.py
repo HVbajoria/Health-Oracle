@@ -28,7 +28,7 @@ def gradient_text(text, color1, color2):
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: bold;
-        font-size: 62px;
+        font-size: 54px;
         """
         return f'<span style="{gradient_css}">{text}</span>'
 

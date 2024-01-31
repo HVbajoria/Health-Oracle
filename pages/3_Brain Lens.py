@@ -353,12 +353,12 @@ if image is not None:
     else:
         st.success("Feel safe! No tumor detected")
         st.markdown("##### Need more information? :speech_balloon:", unsafe_allow_html=False)
-            first_run = st.session_state.get("first_run", True)
+        first_run = st.session_state.get("first_run", True)
 
-            if first_run:
-                if st.button("Chat with AI Bot"):
-                    st.session_state.first_run = False
-                    runner()
-            else:
+        if first_run:
+            if st.button("Chat with AI Bot"):
+                st.session_state.first_run = False
                 runner()
+        else:
+            runner()
     
