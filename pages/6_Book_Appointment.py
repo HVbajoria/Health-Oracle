@@ -131,6 +131,21 @@ def doctor():
     <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+    .button {
+    background-color: #12a69c;
+    border: none;
+    color: white;
+    padding: 10px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    border-radius: 12px;
+    cursor: pointer;
+    }
+    </style>
     <script src="https://cdn.tiny.cloud/1/0jihkifpc837tensun96a5r8gkwpqi914vkk9f8in0gtxcve/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <body>
@@ -157,27 +172,12 @@ def doctor():
             ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant")),
         });
     </script>
-    <style>
-.button {
-  background-color: #04AA6D;
-  border: none;
-  color: white;
-  padding: 10px 12px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 15px;
-  margin: 4px 2px;
-  border-radius: 12px;
-  cursor: pointer;
-}
-</style>
 
     <form method="post" action="somepage">
         <textarea id="myTextArea" class="mceEditor">It is under development. It stores the message in local storage</textarea>
     </form>
 
-    <button onclick="downloadFile()">Save Message</button>
+    <button class="button" onclick="downloadFile()">Save Message</button>
 </body>
 </html>
     """, height=600)
