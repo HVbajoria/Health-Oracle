@@ -79,6 +79,8 @@ def runner():
         st.session_state.conversation = []
 
     user_input = st.chat_input(placeholder="Your message")
+    doc = docx.Document()
+    doc.save("HealthOracle_Chat.docx")
 
     if user_input:
         if user_input:
@@ -106,7 +108,7 @@ def runner():
     
     st.download_button(
                 label="Download Conversation",
-                data=open("HealthOracle_Chat.docx", "wb").read(),
+                data=open("HealthOracle_Chat.docx", "rb").read(),
                 file_name="Conversation.docx",
                 mime="application/octet-stream",
                 help="Click to download the conversation."
