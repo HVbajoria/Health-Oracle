@@ -301,10 +301,10 @@ if image is not None:
         if name == "adenocarcinoma":
             st.write(
                 """
-                Glioma is a brain tumor that develops from glial cells. Its exact causes are not fully known, but risk factors include radiation exposure and certain genetic disorders. Gliomas can affect brain function, causing headaches, seizures, and neurological deficits. MRI is used to detect and evaluate gliomas, showing abnormal masses or areas of increased signal intensity. The size, location, and enhancement pattern of the tumor help determine its grade and guide treatment decisions.
+               Lung adenocarcinoma is a type of non-small cell lung cancer (NSCLC) that originates in the cells lining the small air sacs (alveoli) in the lungs. 
                 """
             )
-            st.image("images/glioma.webp", caption="Glioma", width=350)
+            st.image("images/Adenocarcinoma.png", caption="Glioma", width=350)
             st.write("More Info")
 
             tab1, tab2, tab3 = st.tabs(
@@ -347,10 +347,10 @@ if image is not None:
         ):
             st.write(
                 """
-                Meningioma is a brain tumor that originates from the meninges, the protective membranes covering the brain and spinal cord. Its exact cause is unknown, but risk factors include radiation exposure, certain genetic conditions, and hormonal factors. Meningiomas can vary in symptoms depending on size and location. MRI is commonly used to detect and evaluate meningiomas, showing well-defined masses with a dural tail.
+                Squamous cell carcinoma of the lungs, also known as squamous cell lung cancer, is a type of non-small cell lung cancer (NSCLC) that originates from the squamous epithelial cells lining the respiratory tract, particularly the bronchi. 
                 """
             )
-            st.image("images/Meningioma.jfif", caption="Meningioma", width=350)
+            st.image("images/Squamous cell carcinoma.png", caption="Meningioma", width=350)
             st.write("Known Carried Diseases")
             btab1, btab2, btab3 = st.tabs(
                 ["Causes", "symptoms", "Treatment"]
@@ -390,10 +390,10 @@ if image is not None:
         elif name == "large cell carcinoma":
             st.write(
                 """
-                A pituitary tumor, also known as pituitary adenoma, is a non-cancerous growth in the pituitary gland. It can be functioning or non-functioning, causing hormonal imbalances or symptoms due to its size. Symptoms may include headaches, vision problems, fatigue, and hormonal disturbances. Diagnosis involves imaging tests like MRI, and treatment options include medication, surgery, or radiation therapy.
+                Large cell carcinoma of the lungs is another type of non-small cell lung cancer (NSCLC).It is so named because the cancer cells are large and undifferentiated when examined under a microscope.
                 """
             )
-            st.image("images/petu.jfif", caption="Pituitary", width=350)
+            st.image("images/Large Cell Carcinoma.png", caption="Large Cell Carcinoma", width=350)
             st.write("Known Carried Diseases")
             ctab1, ctab2, ctab3 = st.tabs(
                 ["Causes", "Symptoms", "Treatment"]
@@ -431,5 +431,14 @@ if image is not None:
                 runner()
 
     else:
-        st.text("No disease detected")
+        st.success("Feel safe! No disease detected")
+        st.markdown("##### Need more information? :speech_balloon:", unsafe_allow_html=False)
+            first_run = st.session_state.get("first_run", True)
+
+            if first_run:
+                if st.button("Chat with AI Bot"):
+                    st.session_state.first_run = False
+                    runner()
+            else:
+                runner()
     
