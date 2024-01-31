@@ -106,7 +106,7 @@ def runner():
     
     st.download_button(
                 label="Download Conversation",
-                data=open("HealthOracle_Chat.docx", "rb").read(),
+                data=open("HealthOracle_Chat.docx", "wb").read(),
                 file_name="Conversation.docx",
                 mime="application/octet-stream",
                 help="Click to download the conversation."
