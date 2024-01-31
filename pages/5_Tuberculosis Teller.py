@@ -16,7 +16,7 @@ account_id = st.secrets["tuberculosis_account_id"]
 credentials = ApiKeyCredentials(in_headers={"Prediction-key": PREDICTION_KEY})
 predictor = CustomVisionPredictionClient(ENDPOINT, credentials)
 
-st.set_page_config(page_title="HealthOracle: Decode Your Health")
+st.set_page_config(page_title="HealthOracle", page_icon="💊")
 
 database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
 database_headers={'X-Cybozu-API-Token':f"{st.secrets['kintone_key']}", 'Content-Type': 'application/json'}

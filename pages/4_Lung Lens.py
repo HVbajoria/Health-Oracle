@@ -38,7 +38,7 @@ account_id = st.secrets["lung_account_id"]
 credentials = ApiKeyCredentials(in_headers={"Prediction-key": PREDICTION_KEY})
 predictor = CustomVisionPredictionClient(ENDPOINT, credentials)
 
-st.set_page_config(page_title="HealthOracle: Decode Your Health")
+st.set_page_config(page_title="HealthOracle", page_icon="💊")
 
 def bot_response(question):
     API_BASE_URL = f"https://api.cloudflare.com/client/v4/accounts/{account_id}/ai/run/"

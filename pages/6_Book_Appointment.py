@@ -6,7 +6,7 @@ import requests
 import streamlit.components.v1 as components
 import js2py 
 import sys
-
+st.set_page_config(page_title="HealthOracle", page_icon="💊")
 def book_appointment(doctor_name, patient_email, patient_name):
     # Add your booking logic here, e.g., database integration, etc.
 
