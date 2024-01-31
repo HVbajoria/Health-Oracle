@@ -126,12 +126,6 @@ def doctor():
     patient_email = st.text_input("Enter your email", "")
     patient_name = st.text_input("Enter your name", "")
 
-    from selenium import webdriver
-    from selenium.webdriver.chrome.options import Options
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.webdriver.support import expected_conditions as EC
-
     # Render TinyMCE editor using components.html
     st.components.v1.html("""
     <!DOCTYPE html>
