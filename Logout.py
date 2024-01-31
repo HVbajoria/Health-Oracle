@@ -102,9 +102,9 @@ def main():
     color2 = "#0fab7b"
     text = "HealthOracle"
   
-    # left_co, cent_co,last_co = st.columns(3)
-    # with cent_co:
-    #     st.image("images/logo.png", width=200)
+    left_co, cent_co,last_co = st.columns(3)
+    with cent_co:
+        st.image("images/logo.png", width=200)
 
     styled_text = gradient_text(text, color1, color2)
     st.write(f"<div style='text-align: center;'>{styled_text}</div>", unsafe_allow_html=True)
