@@ -94,7 +94,7 @@ def doctor():
     st.markdown("### Book your appointment with ease")
     if "doctor" not in st.session_state:
         database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
-        database_headers={'X-Cybozu-API-Token':f"st.secrets['kintone_key']", 'Content-Type': 'application/json'}
+        database_headers={'X-Cybozu-API-Token':f"{st.secrets['kintone_key']}", 'Content-Type': 'application/json'}
 
         doctors = []
 

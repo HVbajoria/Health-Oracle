@@ -7,7 +7,7 @@ import docx
 from streamlit_extras.switch_page_button import switch_page
 
 database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
-database_headers={'X-Cybozu-API-Token':f"st.secrets['kintone_key']", 'Content-Type': 'application/json'}
+database_headers={'X-Cybozu-API-Token':f"{st.secrets['kintone_key']}", 'Content-Type': 'application/json'}
 
 doctors = []
 
