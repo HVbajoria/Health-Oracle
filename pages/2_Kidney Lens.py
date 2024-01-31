@@ -7,10 +7,10 @@ import docx
 from streamlit_extras.switch_page_button import switch_page
 
 # Replace with your endpoint and prediction key
-ENDPOINT = "https://kidneydataset-prediction.cognitiveservices.azure.com/"
-PREDICTION_KEY = "58a68df1714b4a49a52bfb52deaed60d"
-API_TOKEN = 'HJaeFtURjyS_Li39VxQJokDxSS4QUpVz4thesMoF'
-account_id ="7b9a0aec2d148d684d28a3c7645ce0a7"
+ENDPOINT = st.secrets["kidney_endpoint"]
+PREDICTION_KEY = st.secrets["kidney_PREDICTION_KEY"]
+API_TOKEN = st.secrets["kidney_API_TOKEN"]
+account_id = st.secrets["kidney_account_id"]
 
 # Create a prediction client
 credentials = ApiKeyCredentials(in_headers={"Prediction-key": PREDICTION_KEY})
@@ -19,7 +19,7 @@ predictor = CustomVisionPredictionClient(ENDPOINT, credentials)
 st.set_page_config(page_title="HealthOracle: Decode Your Health")
 
 database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
-database_headers={'X-Cybozu-API-Token':'LeX70V7wU3KdgKN6JkzOlLkLK8nShxoEFbuF1ZWj', 'Content-Type': 'application/json'}
+database_headers={'X-Cybozu-API-Token':f"st.secrets['kintone_key']", 'Content-Type': 'application/json'}
 
 doctors = []
 
@@ -183,11 +183,11 @@ st.text(
     "Upload an image of a close up of your CT scan and we will tell you what is the disease you are suffering from"
 )
 # read images.zip as a binary file and put it into the button
-with open("test.zip", "rb") as fp:
+with open("kidney.zip", "rb") as fp:
     btn = st.download_button(
         label="Download test images",
         data=fp,
-        file_name="test.zip",
+        file_name="kidney.zip",
         mime="application/zip",
     )
 image = st.file_uploader(

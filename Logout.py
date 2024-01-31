@@ -7,10 +7,9 @@ from streamlit.source_util import _on_pages_changed, get_pages
 from streamlit_extras.switch_page_button import switch_page
 from auth0_component import login_button
 
-domain = "dev-knntweq53ktaaazu.us.auth0.com"
-clientId = "dUCTosQyCfOt1hJ1nP3enlBarSCvmpcP"
-auth0_client_secret = "1mtzwPPbMwz2YunSJ-Ms28sDdaqBCPfWzzk8tuDnrFxZkvyHla7AqLRNOtyWsOiY"
-
+domain = st.secrets['domain']
+clientId = st.secrets['clientId']
+auth0_client_secret = st.secrets['auth0_client_secret']
 
 DEFAULT_PAGE = "Logout.py"
 SECOND_PAGE_NAME = "Welcome"

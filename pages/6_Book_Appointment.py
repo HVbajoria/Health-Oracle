@@ -25,7 +25,7 @@ def book_appointment(doctor_name, patient_email, patient_name):
 
 def send_confirmation_email(patient_email, doctor_name,patient_name):
    # Replace 'your_azure_logic_app_url' with the URL of your Azure logic app to send appointment emails
-    azure_logic_app_url = "https://prod-11.centralindia.logic.azure.com/workflows/a845897faa254f93a5db7375a917acc7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qJUCl1H4fqe0QGHrhZQonWcYbCIM_W2Pv7sZElzdTLg"
+    azure_logic_app_url = st.secrets['azure_logic_app']
 
     email_data = {
         "to": patient_email,
@@ -44,7 +44,7 @@ def send_confirmation_email(patient_email, doctor_name,patient_name):
 
 def send_appointment_email(doctor_email, patient_email, doctor_name, patient_name):
     # Replace 'your_azure_logic_app_url' with the URL of your Azure logic app to send appointment emails
-    azure_logic_app_url ="https://prod-11.centralindia.logic.azure.com/workflows/a845897faa254f93a5db7375a917acc7/triggers/manual/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=qJUCl1H4fqe0QGHrhZQonWcYbCIM_W2Pv7sZElzdTLg"
+    azure_logic_app_url =st.secrets['azure_logic_app']
 
     email_data = {
         "to": doctor_email,
@@ -94,7 +94,7 @@ def doctor():
     st.markdown("### Book your appointment with ease")
     if "doctor" not in st.session_state:
         database_endpoint="https://hvbajoria101.kintone.com/k/v1/record.json?"
-        database_headers={'X-Cybozu-API-Token':'LeX70V7wU3KdgKN6JkzOlLkLK8nShxoEFbuF1ZWj', 'Content-Type': 'application/json'}
+        database_headers={'X-Cybozu-API-Token':f"st.secrets['kintone_key']", 'Content-Type': 'application/json'}
 
         doctors = []
 
@@ -177,8 +177,7 @@ def doctor():
     if st.button("Book Appointment"):
         if not patient_email or not patient_name:
             st.warning("Please enter both email and name.")
-        else:
-            
+        else:   
             book_appointment(selected_doctor, patient_email, patient_name)
 
 
