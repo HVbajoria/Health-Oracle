@@ -28,7 +28,7 @@ def gradient_text(text, color1, color2):
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         font-weight: bold;
-        font-size: 42px;
+        font-size: 62px;
         """
         return f'<span style="{gradient_css}">{text}</span>'
 
@@ -56,7 +56,7 @@ def gradient_text(text, color1, color2):
 
 color1 = "#FF5E33"
 color2 = "#FFA233"
-text = "Brain Tumor Detection: Unveil the Details"
+text = "Brain Lens: Unveil the Details"
   
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
@@ -76,7 +76,9 @@ Health Oracle is your ally in identifying three distinct types of brain tumors:
 - **Glioma:** Detect the presence of gliomas, the most prevalent form of brain tumors, for proactive health management.
 
 - **Meningioma:** Recognize meningiomas, enabling timely monitoring and potential intervention for optimal outcomes.""")
-
+aps = st.button("Brain Lens")
+if aps:
+    switch_page("Brain Lens")
 
 def gradient_text(text, color1, color2):
         gradient_css = f"""
@@ -90,7 +92,7 @@ def gradient_text(text, color1, color2):
 
 color1 = "#FF5E33"
 color2 = "#FFA233"
-text = "Lung Cancer Classification: Precision in Every Scan"
+text = "Lung Lens: Precision in Every Scan"
   
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
@@ -106,6 +108,9 @@ Navigate the complexities of lung health with Health Oracle, distinguishing betw
 - **Large Cell Carcinoma:** Detect large cell carcinomas swiftly, ensuring prompt medical attention and targeted therapies.
 
 - **Squamous Cell Carcinoma:** Recognize squamous cell carcinomas with precision, guiding towards effective treatment strategies.""")
+aps = st.button("Lung Lens")
+if aps:
+    switch_page("Lung Lens")
 
 def gradient_text(text, color1, color2):
         gradient_css = f"""
@@ -119,7 +124,7 @@ def gradient_text(text, color1, color2):
 
 color1 = "#FF5E33"
 color2 = "#FFA233"
-text = "Renal Insights: Delving into Kidney Health"
+text = "Kidney Lens: Delving into Kidney Health"
   
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
@@ -136,6 +141,9 @@ Health Oracle extends its capabilities to renal health, offering insights into t
 - **Tumor:** Identify tumors in the kidneys with precision, facilitating prompt medical attention and care.
 
 - **Stone:** Detect kidney stones accurately, guiding healthcare professionals towards the most effective treatment plans.""")
+aps = st.button("Kidney Lens")
+if aps:
+    switch_page("Kidney Lens")
 
 def gradient_text(text, color1, color2):
         gradient_css = f"""
@@ -149,7 +157,7 @@ def gradient_text(text, color1, color2):
 
 color1 = "#FF5E33"
 color2 = "#FFA233"
-text = "Tuberculosis Detection in Lungs: A Comprehensive Approach"
+text = "Tuberculosis Teller: A Comprehensive Approach"
   
 # left_co, cent_co,last_co = st.columns(3)
 # with cent_co:
@@ -158,8 +166,10 @@ text = "Tuberculosis Detection in Lungs: A Comprehensive Approach"
 styled_text = gradient_text(text, color1, color2)
 st.write(f"<div>{styled_text}</div>", unsafe_allow_html=True)
 st.markdown("""
-
 Health Oracle goes beyond expectations by identifying tuberculosis in the lungs through detailed Chest X-ray analysis, allowing for early detection and intervention.""")
+aps = st.button("Tuberculosis Teller")
+if aps:
+    switch_page("Tuberculosis Teller")
 
 def gradient_text(text, color1, color2):
         gradient_css = f"""
@@ -195,8 +205,6 @@ Embark on a journey towards personalized healthcare. Download **Health Oracle** 
 """
 
 )
-aps = st.button("Find Out!")
-if aps:
-    switch_page("Brain Lens")
+
 
 
