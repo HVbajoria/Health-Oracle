@@ -211,7 +211,7 @@ if image is not None:
                 Tuberculosis can spread when a person with the illness coughs, sneezes or sings. This can put tiny droplets with the germs into the air. Another person can then breathe in the droplets, and the germs enter the lungs.
                 """
             )
-            st.image("images/tuberculosis.png", caption="Glioma", width=350)
+            st.image("images/tuberculosis.png", caption="Tuberculosis", width=350)
             st.write("More Info")
 
             tab1, tab2, tab3 = st.tabs(

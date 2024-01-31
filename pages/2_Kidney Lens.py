@@ -227,7 +227,7 @@ if image is not None:
                 Kidney cysts are round pouches of fluid that form on or in the kidneys. Kidney cysts can occur with disorders that may impair kidney function. But more often, kidney cysts are a type called simple kidney cysts. Simple kidney cysts aren't cancer and rarely cause problems.
                 """
             )
-            st.image("images/cyst.png", caption="Glioma", width=350)
+            st.image("images/cyst.png", caption="Kidney cyst", width=350)
             st.write("More Info")
 
             tab1, tab2, tab3 = st.tabs(
@@ -275,8 +275,8 @@ if image is not None:
                 """
             )
             col1, col2=st.columns(2)
-            col1.image("images/male_stone.png", caption="mstone", width=350)
-            col2.image("images/female_stone.png", caption="fstone", width=350)
+            col1.image("images/male_stone.png", caption="male stone", width=350)
+            col2.image("images/female_stone.png", caption="female stone", width=350)
             st.write("Known Carried Diseases")
             btab1, btab2, btab3 = st.tabs(
                 ["Causes", "Symptoms", "Treatment"]
