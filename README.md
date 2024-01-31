@@ -86,10 +86,9 @@ Health Oracle is a paradigm shift in healthcare, placing the power of AI-powered
 
 ## Methodology: 
 <p align="center">
-<img src="https://github.com/HVbajoria/Health-Oracle/assets/62978274/3426ae77-3547-4ad4-8cc2-2edbfe7bbfe2" width="950" alt="Methodology" >
+<img src="https://github.com/HVbajoria/Health-Oracle/assets/62978274/9f894d24-d545-48b7-aaa2-5d20392be782" width="950" alt="Methodology" >
   </p>
 </br>
-
     
  ## Demo Video Link :movie_camera: : 
  
