@@ -116,24 +116,33 @@ gcauses = """
 There are a few factors that contribute to the development of this disease. The most common adenocarcinoma causes include:
 
 Smoking- Tobacco use is the primary cause of adenocarcinoma and other types of cancer.
+
 Toxin exposure- Harmful toxins in your home or work environment can also cause adenocarcinoma.
+
 Previous radiation therapy- If you've had radiation therapy in the past, you have a higher risk of developing adenocarcinoma.
 """
 gsymptoms = """
 The first symptom is usually a chronic cough. You may cough up saliva and mucous with small amounts of blood. Other symptoms may include:
 
 Difficulty breathing
+
 Chest pain
+
 Wheezing
+
 Hoarseness
+
 Loss of appetite
+
 Weight loss
 """
 gtreat = """
 The treatment recommended for you will depend on the location, size and type of tumor. It also depends on whether or not the cancer has spread to other parts of your body. There are three main treatments for adenocarcinoma:
 
 Surgery- Usually the first line of treatment for adenocarcinoma, surgery is done to remove cancer and some of the surrounding tissue.
+
 Chemotherapy- This treatment involves using drugs to kill cancer cells. Chemotherapy may be used in a specific area or throughout your entire body.
+
 Radiation therapy- Often used in combination with chemotherapy or surgery, radiation therapy uses imaging to target adenocarcinoma tumors and leave healthy tissues intact.
 """
 
@@ -156,12 +165,19 @@ Being exposed to secondhand smoke can increase your risk of lung cancer.
 msymptoms = """Many people don't experience squamous cell lung carcinoma symptoms until the cancer spreads. Some of the most common symptoms are:
 
 persistent cough
+
 bloody sputum
+
 shortness of breath or wheezing
+
 hoarseness
+
 chest pain, especially when taking a deep breath or coughing
+
 unexplained weight loss
+
 decreased appetite
+
 fatigue
 
 It's also possible that people with squamous cell lung carcinoma may experience recurring lung infections. These can include pneumonia or bronchitis.
@@ -176,22 +192,35 @@ The treatment you receive will be specific to your situation, but there are some
 
 pcauses = """The exact causes of large cell carcinoma, like other types of lung cancer, are not fully understood, but several risk factors have been identified. Here are some of the key factors associated with the development of large cell carcinoma:
 Smoking
+
 Secondhand smoke
+
 Genetic factors
+
 Lung disease
 """
 psymptoms = """ Large cell carcinoma and other forms of non-small cell lung cancer share the same symptoms, which may include:
 
 persistent cough that gets worse over time
+
 coughing up blood
+
 trouble breathing
+
 chest pain
+
 wheezing
+
 hoarseness
+
 weight loss without trying
+
 poor appetite
+
 fatigue or tiredness
+
 difficulty swallowing
+
 swelling around the face or neck
 """
 ptreat = """Here are some of the main types of treatment for non-small cell lung cancers like Large cell carcinoma.
@@ -260,7 +289,7 @@ text = "HealthOracle: Lung Lens"
 styled_text = gradient_text(text, color1, color2)
 st.write(f"<div style='text-align: center;'>{styled_text}</div>", unsafe_allow_html=True)
 st.text(
-    "Upload an image of a close up of a tumerous MRI scan and we will tell you what type it is."
+    "Upload an image of a close up of a CT scan and we will tell you what type of Lung Cancer it is."
 )
 # read images.zip as a binary file and put it into the button
 with open("lung.zip", "rb") as fp:
@@ -278,7 +307,7 @@ if image is not None:
     disp = False
     
     with image:
-        st.image(image, caption="Your MRI Scan", width=350)
+        st.image(image, caption="Your CT Scan", width=350)
         image_data = image.read()
         results = predictor.classify_image("e9f1afe5-1690-4ce7-88a4-23a05ee90732", "Iteration1", image_data)
     disp = True
@@ -304,7 +333,7 @@ if image is not None:
                Lung adenocarcinoma is a type of non-small cell lung cancer (NSCLC) that originates in the cells lining the small air sacs (alveoli) in the lungs. 
                 """
             )
-            st.image("images/Adenocarcinoma.png", caption="Glioma", width=350)
+            st.image("images/Adenocarcinoma.png", caption="Adenocarcinoma", width=350)
             st.write("More Info")
 
             tab1, tab2, tab3 = st.tabs(
@@ -350,7 +379,7 @@ if image is not None:
                 Squamous cell carcinoma of the lungs, also known as squamous cell lung cancer, is a type of non-small cell lung cancer (NSCLC) that originates from the squamous epithelial cells lining the respiratory tract, particularly the bronchi. 
                 """
             )
-            st.image("images/Squamous cell carcinoma.png", caption="Meningioma", width=350)
+            st.image("images/Squamous cell carcinoma.png", caption="Squamous cell carcinoma", width=350)
             st.write("Known Carried Diseases")
             btab1, btab2, btab3 = st.tabs(
                 ["Causes", "symptoms", "Treatment"]

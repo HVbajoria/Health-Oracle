@@ -79,7 +79,6 @@ Health Oracle is a paradigm shift in healthcare, placing the power of AI-powered
 * **Streamlit Cloud** to deploy the application for global access. 
 * **Microsoft Azure AI Custom Vision** to get a computer vision model trained using our dataset and use it to predict different illnesses with the patient's scan. 
 * **Microsoft Azure Logic App** to send emails to the patient, doctor on appointment booking.
-* **Auth0** for one-click faster, safer and powerful authentication.
 * **Cloudflare AI workflow** to build the medical assistant AI chat bot which helps the user know more details about illness. 
 * **Kintone** to securely store and fetch doctor’s data from the App. It also allows us to get various views and insights about our doctors. 
 * **TinyMCE** to allow the user to send a customize message to the doctor with the help of rich text editor (under development)
